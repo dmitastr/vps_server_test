@@ -22,9 +22,10 @@ func main() {
 
 func handler(w http.ResponseWriter, r *http.Request) {
 	name := r.URL.Query().Get("name")
+	useName := name
 	if name == "" {
-		name = "World"
+		useName = "World"
 	}
 	log.Printf("Receive request with name=%s\n", name)
-	w.Write([]byte(fmt.Sprintf("Hello %s. This is test server", name)))
+	w.Write([]byte(fmt.Sprintf("Hello %s. This is test server", useName)))
 }
