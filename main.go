@@ -26,5 +26,5 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		name = "World"
 	}
 	log.Printf("Receive request with name=%s\n", name)
-	w.Write([]byte(fmt.Sprintf("Hello %s", name)))
+	w.Write([]byte(fmt.Sprintf("Hello %s. This is test server", name)))
 }
