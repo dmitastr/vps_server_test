@@ -1,5 +1,5 @@
 services:
-  measure-bot:
+  echo-server:
     build: .
     restart: unless-stopped
     env_file:

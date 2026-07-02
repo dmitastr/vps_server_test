@@ -4,14 +4,17 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 )
 
 func main() {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", handler)
+	port := os.Getenv("PORT")
+	address := ":" + port
 
-	log.Println("Starting server on port 8080")
-	if err := http.ListenAndServe(":8080", mux); err != nil {
+	log.Printf("Starting server on port %s\n", port)
+	if err := http.ListenAndServe(address, mux); err != nil {
 		log.Fatal(err)
 	}
 
@@ -22,6 +25,6 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	if name == "" {
 		name = "World"
 	}
-	log.Printf("Receive request with name=%s", name)
+	log.Printf("Receive request with name=%s\n", name)
 	w.Write([]byte(fmt.Sprintf("Hello %s", name)))
 }
